@@ -9,10 +9,22 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+/**
+ * In this class was added all the factory of objects, in addition to the creation of
+ *  a constructor to instantiate the actions with the objects
+ * @author Adrián Rojas Lara
+ * @version 1-0
+ *@since 08-11-2020
+ */
 
 public class HomePage {
 	
 	 WebDriver driver; 
+	 
+	 /**
+	  * Declaration of global variables
+	  * @category FindBy
+	  */
 	 
 	 @FindBy(xpath="//div/div[2]/button[2]")
 	 WebElement acceptCookie;
@@ -40,7 +52,6 @@ public class HomePage {
 	 
 	 @FindBy(xpath="//BUTTON/HP-SEARCH-WIDGET-TAB/DIV[normalize-space()=\"flights\"]")
 	 WebElement generateCalendar;
-	 
 	 
 	 
 	 @FindBy(xpath="//ry-spinner[contains(.,'Search')]") 
@@ -130,7 +141,6 @@ public class HomePage {
      
      //Get name label user Log in
      public String getLabelUserLogin() {
-    
     	 return labelUserLogin.getText();
     	 
      }
@@ -152,8 +162,7 @@ public class HomePage {
     	 timeSleep(3000);
      }
      
-     //click search depart return of flight
-     
+     //click search depart return of flight  
      public void clickSearchDepartReturn() {
     	 searchDepartReturn.click();
     	 timeSleep(3500);
@@ -284,6 +293,7 @@ public class HomePage {
      
      /**
       * This POM method will  be exposed in test case to select departure and destination
+      
       * @param strDeparture
       * 
       * @param strDestine
@@ -304,7 +314,11 @@ public class HomePage {
     	 timeSleep(3000);
      }
      /**
-      * 
+      * * in this method all actions are performed: 
+        (*) Select the ticket payment amount
+        (*) Type of Baggage
+        (*) Adding passenger data
+        (*) Validate that you access the air ticket payment page
       * @param strName
       * @param strSurName
       */
@@ -375,6 +389,9 @@ public class HomePage {
       	  }
      }
      
+     /**
+      * simule a click in object calendar
+      */
      public void generateFlightDate() {
     	 
     	 //click in init Calendar
