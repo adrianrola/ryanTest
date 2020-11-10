@@ -9,6 +9,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
+
 /**
  * In this class was added all the factory of objects, in addition to the creation of
  *  a constructor to instantiate the actions with the objects
@@ -20,6 +22,7 @@ import org.openqa.selenium.support.PageFactory;
 public class HomePage {
 	
 	 WebDriver driver; 
+	 
 	 
 	 /**
 	  * Declaration of global variables
@@ -47,8 +50,9 @@ public class HomePage {
 	 @FindBy(xpath="//input[@id=\'input-button__departure\']")
 	 WebElement departure;
 	
-	 @FindBy(xpath="//fsw-input-button[2]/div/input")
+	 @FindBy(xpath="//INPUT[@id=\"input-button__destination\"]")
 	 WebElement destination;
+	 
 	 
 	 @FindBy(xpath="//BUTTON/HP-SEARCH-WIDGET-TAB/DIV[normalize-space()=\"flights\"]")
 	 WebElement generateCalendar;
@@ -69,7 +73,7 @@ public class HomePage {
 	 @FindBy(xpath="//DIV[1]/FARE-CARD[1]/DIV[1]/DIV[1]/BUTTON[1]") 
 	 WebElement valueTravelLightDeparture;
 	 
-	 @FindBy(xpath="//button[@type='button']") 
+	 @FindBy(xpath="//DIV/BUTTON[normalize-space()=\"-\"]") 
 	 WebElement selectTitlePassengers;
 	 
 	 @FindBy(xpath="//ry-dropdown-item/button") 
@@ -90,13 +94,13 @@ public class HomePage {
 	 @FindBy(xpath="//random-allocation-info/div/div[3]/div/button") 	
 	 WebElement confirmRandomSeatAllocation;
 	 
-	 @FindBy(css=".product:nth-child(1) .ry-radio-circle-button__label") 
+	 @FindBy(xpath="//BAGS-CABIN-BAG-PRODUCT[1]/DIV[1]/BAGS-PRODUCT-SELECTOR[1]/DIV[1]/DIV[1]/DIV[1]/RY-RADIO-CIRCLE-BUTTON[1]/LABEL[1]") 
 	 WebElement smallBagOnly;
      
 	 @FindBy(xpath="//bags-continue-flow/button")
 	 WebElement bagsContinueFlow;
 	 
-	 @FindBy(css=".ry-button--full") 
+	 @FindBy(xpath="//DIV/DIV/BUTTON[normalize-space()=\"Continue\"]") 
 	 WebElement continueTripFlight;
 	 
 	 @FindBy(css=".basket-total-icon__tick path")
@@ -108,9 +112,61 @@ public class HomePage {
 	 @FindBy(className="section-title")
 	 WebElement pagePayment;
 	 
+	 @FindBy(xpath="//form/ry-input-d/div/input")
+	 WebElement txtCardNumer;
+	 
+	 @FindBy(xpath="//DIV/RY-DROPDOWN/DIV/BUTTON[normalize-space()=\"Month\"]")
+	 WebElement dateMonthCreditCar;
+	 
+	 @FindBy(xpath="//span[2]/div/ry-dropdown/div[2]/div/div/ry-dropdown-item[10]/button/div/div")
+	 WebElement selectMonthCreditCar;
+	 
+	 @FindBy(xpath="//DIV/RY-DROPDOWN/DIV/BUTTON[normalize-space()=\"Year\"]")
+	 WebElement dateYearCreditCar;
+	 
+	 @FindBy(xpath="//RY-DROPDOWN-ITEM/BUTTON[normalize-space()=\"2024\"]")
+	 WebElement selectYearCreditCar;
+	 
+	 @FindBy(css=".verification-code__input > .\\_input-container > .b2")
+	 WebElement selectCVVCreditCar;
+	 
+	 
+	 @FindBy(css=".ng-untouched:nth-child(4) > .\\_input-container > .b2")
+	 WebElement typeCVVCreditCar;
+	 
+	 @FindBy(css=".\\_has-value")
+	 WebElement selectNameCreditCar;
+	 
+	 @FindBy(xpath="//address-form/form/ry-input-d/div/input")
+	 WebElement selectAddressCard;
+	 
+	 @FindBy(xpath="//ry-input-d[3]/div/input")
+	 WebElement selectCityAddressCard;
+	 
+	 @FindBy(xpath="//div/div/input")
+	 WebElement clickCountryAddressCard;
+	 
+	 
+	 @FindBy(css=".contact-details__input-tel > .\\_input-container > .b2")
+	 WebElement selectPhoneCard;
+	 
+	 @FindBy(xpath="//APP-ROOT[1]/NG-COMPONENT[1]/RY-SPINNER[1]/DIV[1]/PAYMENT-FORM[1]/FORM[1]/DIV[1]/CONTACT-DETAILS[1]/DIV[1]/DIV[1]/DIV[1]/DIV[2]/RY-INPUT-D[1]/DIV[1]/INPUT[1]")
+	 WebElement zipCodeCard;
+	 
+	 @FindBy(css=".terms-and-conditions__checkbox .\\_background")
+	 WebElement radioButtonTermasConditions;
+	 
+	 @FindBy(id="insurance-opt-out")
+	 WebElement insuranceMedicalNo;
+	 
+	 @FindBy(xpath="//APP-ROOT[1]/NG-COMPONENT[1]/RY-SPINNER[1]/DIV[1]/PAYMENT-FORM[1]/FORM[1]/DIV[8]/DIV[1]/PAY-BUTTON[1]/DIV[1]/BUTTON[1]" )
+	 WebElement acceptConditionsPay;
+	 
+	 
      public HomePage(WebDriver driver) {
     	 this .driver=driver;
     	 PageFactory.initElements(driver, this);
+    
      }
      
      //click accept cookies
@@ -153,6 +209,7 @@ public class HomePage {
      
      // set destine
      public void setDestine(String strDestine) {
+    	 destination.click();
     	 destination.sendKeys(strDestine);
      }
      
@@ -161,6 +218,8 @@ public class HomePage {
     	 generateCalendar.click();
     	 timeSleep(3000);
      }
+     
+ 
      
      //click search depart return of flight  
      public void clickSearchDepartReturn() {
@@ -212,7 +271,7 @@ public class HomePage {
      //click add passenger
      public void clickAddPassenger() {
     	 btnAddPassengers.click();
-    	 timeSleep(3500);
+    	 timeSleep(4500);
      }
       
      
@@ -225,7 +284,7 @@ public class HomePage {
      // click confirm random seat
      public void clickConfirmRandomSeat() {
     	 confirmRandomSeatAllocation.click();
-    	 timeSleep(5000);
+    	 timeSleep(6000);
      }
      
      //click select small bag
@@ -261,6 +320,101 @@ public class HomePage {
      //get title payment 
      public String getNamePay() {
     	 return pagePayment.getText(); 
+     }
+     
+     //set number card
+     public void setTypeCardNumber(String strCardNumber) {
+    	 txtCardNumer.sendKeys(strCardNumber);
+    	 timeSleep(2500);
+     }
+     
+     //set month credit card
+     public void setClickMonthCardNumber() {
+    	 dateMonthCreditCar.click();
+    	 timeSleep(2000);
+     }
+     
+     //set type month card
+     public void selecTypeMonthCardNumber() {
+    	 selectMonthCreditCar.click();
+    	 timeSleep(2300);
+     }
+     
+     //set month credit card
+     public void setClickYearCardNumber() {
+    	 dateYearCreditCar.click();
+    	 timeSleep(2000);
+     }
+     
+     //set type month card
+     public void selecTypeYearCardNumber() {
+    	 selectYearCreditCar.click();
+    	 timeSleep(2300);
+     } 
+     
+     //set number cvv
+     public void setTypeCVV(String strNumCVV) {
+    	 selectCVVCreditCar.click();
+    	 selectCVVCreditCar.click();
+    	 timeSleep(2000);
+    	 selectCVVCreditCar.click();
+    	 selectCVVCreditCar.sendKeys(strNumCVV);
+     }
+      
+   //set name credit car
+     public void typeNameCreditCar() {
+    	 selectCVVCreditCar.sendKeys(Keys.TAB);
+    	 timeSleep(2000);
+     }
+     
+    //set street card 
+     public void typeStreetCreditCar(String strStreetCard) {
+    	 selectAddressCard.sendKeys(strStreetCard);
+     }
+     
+   //set city card 
+     public void typeCityCreditCar(String strCityCard) {
+    	 selectCityAddressCard.sendKeys(strCityCard);
+    	 timeSleep(2000);
+    	
+     }
+      
+   //set Country card 
+     public void typeCountryCreditCar(String strCountry) {
+    	 clickCountryAddressCard.sendKeys(strCountry);
+    	 
+    	 timeSleep(3500);
+    	 selectAddressCard.click();
+    	 selectAddressCard.sendKeys(Keys.TAB);
+    	 clickCountryAddressCard.sendKeys(Keys.ENTER);
+     }
+     
+   //set phone card 
+     public void typePhoneCreditCar(String strNumPhone) {
+    	 selectPhoneCard.sendKeys(strNumPhone);
+     }
+       
+    //set zip code
+     public void typeZipCreditCar() {
+    	 timeSleep(2000);
+    	 selectCityAddressCard.click();
+    	 selectCityAddressCard.sendKeys(Keys.TAB);
+    	 
+     }
+     
+     public void clickRadioAcppeConditions() {
+    	 radioButtonTermasConditions.click();
+    	 timeSleep(2000);
+     }
+     
+     public void clickInsurenseMedical() {
+    	 insuranceMedicalNo.click();
+    	 timeSleep(2000);
+     }
+     
+     public void clickPayButton() {
+    	 acceptConditionsPay.click();
+    	 timeSleep(2000);
      }
      
      /**
@@ -308,10 +462,10 @@ public class HomePage {
     	 
     	 //Fill txtField departure 
     	 this.setDeparture(strDeparture);
-    	 timeSleep(3000);
+    	 timeSleep(4500);
     	 //Fill txtFiedl destination
     	 this.setDestine(strDestine);
-    	 timeSleep(3000);
+    	 timeSleep(3500);
      }
      /**
       * * in this method all actions are performed: 
